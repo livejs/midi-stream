@@ -1,0 +1,30 @@
+{
+  "name": "midi-stream",
+  "version": "0.0.0",
+  "description": "Duplex stream wrapper around 'midi' module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmckegg/midi-stream.git"
+  },
+  "keywords": [
+    "midi",
+    "stream",
+    "duplex",
+    "launchpad",
+    "controller"
+  ],
+  "author": "Matt McKegg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmckegg/midi-stream/issues"
+  },
+  "homepage": "https://github.com/mmckegg/midi-stream",
+  "dependencies": {
+    "midi": "~0.7.1",
+    "through": "~2.3.4"
+  }
+}
