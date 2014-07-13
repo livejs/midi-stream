@@ -27,7 +27,7 @@ module.exports = function(name, index){
   return stream
 }
 
-module.exports.openInput = function(name){
+module.exports.openInput = function(name, index){
   var stream = Through(write, end)
   var input = stream.inputPort = getInput(name, index)
 
@@ -43,7 +43,7 @@ module.exports.openInput = function(name){
   return stream
 }
 
-module.exports.openOutput = function(name){
+module.exports.openOutput = function(name, index){
   var stream = Through(write, end)
   var output = stream.outputPort = getOutput(name, index)
 
@@ -63,14 +63,19 @@ module.exports.openOutput = function(name){
 function getInput(name, index){
   index = index || 0
   var port = new midi.input()
-  var count = port.getPortCount()
-  for (var i=0;i < count;i++){
-    if (port.getPortName(i) === name){
-      if (index){
-        index -= 1
-      } else {
-        port.openPort(i);
-        return port;
+  if (index === 'virtual'){
+    port.openVirtualPort(name)
+    return port
+  } else {
+    var count = port.getPortCount()
+    for (var i=0;i < count;i++){
+      if (port.getPortName(i) === name){
+        if (index){
+          index -= 1
+        } else {
+          port.openPort(i);
+          return port;
+        }
       }
     }
   }
@@ -80,16 +85,22 @@ function getInput(name, index){
 function getOutput(name, index){
   index = index || 0
   var port = new midi.output();
-  var count = port.getPortCount()
-  for (var i=0;i < count;i++){
-    if (port.getPortName(i) === name){
-      if (index){
-        index -= 1
-      } else {
-        port.openPort(i);
-        return port;
+  if (index === 'virtual'){
+    port.openVirtualPort(name)
+    return port
+  } else {
+    var count = port.getPortCount()
+    for (var i=0;i < count;i++){
+      if (port.getPortName(i) === name){
+        if (index){
+          index -= 1
+        } else {
+          port.openPort(i);
+          return port;
+        }
       }
     }
   }
+
   return null;
 }
