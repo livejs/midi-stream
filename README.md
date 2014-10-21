@@ -3,12 +3,12 @@ midi-stream
 
 Duplex stream wrapper around [midi](https://github.com/justinlatimer/node-midi) module.
 
-Check out [web-midi](https://github.com/mmckegg/web-midi) for a browser version of the same API.
+When required from the browser (using browserify) [web-midi](https://github.com/mmckegg/web-midi) is returned instead.
 
 ## Install
 
 ```bash
-$ npm install web-midi
+$ npm install midi-stream
 ```
 
 ## Example

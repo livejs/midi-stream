@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Duplex stream wrapper around 'midi' module",
   "main": "index.js",
+  "browser": "browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/mmckegg/midi-stream",
   "dependencies": {
     "midi": "~0.7.1",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "web-midi": "^0.4.0"
   }
 }
