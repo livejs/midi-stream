@@ -23,10 +23,12 @@
   "bugs": {
     "url": "https://github.com/mmckegg/midi-stream/issues"
   },
+  "optionalDependencies": {
+    "midi": "~0.9.0",
+    "web-midi": "^0.4.0"
+  },
   "homepage": "https://github.com/mmckegg/midi-stream",
   "dependencies": {
-    "midi": "~0.7.1",
-    "through": "~2.3.4",
-    "web-midi": "^0.4.0"
+    "through": "~2.3.4"
   }
 }
