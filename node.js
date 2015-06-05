@@ -1,4 +1,4 @@
-var midi = require("midi");
+var midi = require("midi")
 var Through = require('through')
 
 module.exports = function(name, opts){
