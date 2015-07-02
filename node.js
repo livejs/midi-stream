@@ -76,41 +76,40 @@ module.exports.getPortNames = function(cb){
   var used = {}
   var names = {}
 
-  try {
-    var input = new midi.input()
-    var count = input.getPortCount()
-    for (var i=0;i < count;i++){
-      var name = input.getPortName(i)
-      if (used[name]){
-        var i = used[name] += 1
-        names[name + '/' + i] = true
-      } else {
-        used[name] = 1
-        names[name] = true
+  process.nextTick(function() {
+    try {
+      var input = new midi.input()
+      var count = input.getPortCount()
+      for (var i=0;i < count;i++){
+        var name = input.getPortName(i)
+        if (used[name]){
+          var i = used[name] += 1
+          names[name + '/' + i] = true
+        } else {
+          used[name] = 1
+          names[name] = true
+        }
       }
-    }
-    input.openPort(0)
-    input.closePort()
 
-    used = {}
-    var output = new midi.output()
-    var count = output.getPortCount()
-    for (var i=0;i < count;i++){
-      var name = output.getPortName(i)
-      if (used[name]){
-        var i = used[name] += 1
-        names[name + '/' + i] = true
-      } else {
-        used[name] = 1
-        names[name] = true
+      used = {}
+      var output = new midi.output()
+      var count = output.getPortCount()
+      for (var i=0;i < count;i++){
+        var name = output.getPortName(i)
+        if (used[name]){
+          var i = used[name] += 1
+          names[name + '/' + i] = true
+        } else {
+          used[name] = 1
+          names[name] = true
+        }
       }
+
+      cb&&cb(null, Object.keys(names))
+    } catch (ex){
+      cb&&cb(ex)
     }
-    output.openPort(0)
-    output.closePort()
-    cb&&cb(null, Object.keys(names))
-  } catch (ex){
-    cb&&cb(ex)
-  }
+  })
 }
 
 function getInput(name, opts){
