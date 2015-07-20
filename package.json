@@ -24,11 +24,11 @@
     "url": "https://github.com/mmckegg/midi-stream/issues"
   },
   "optionalDependencies": {
-    "midi": "~0.9.3",
-    "web-midi": "^0.6.1"
+    "midi": "~0.9.3"
   },
   "homepage": "https://github.com/mmckegg/midi-stream",
   "dependencies": {
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "web-midi": "^0.6.1"
   }
 }
