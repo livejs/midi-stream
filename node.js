@@ -14,6 +14,9 @@ module.exports = function(name, opts){
   }
 
   input.on('message', function(deltaTime, data){
+    if (opts && opts.normalizeNotes) {
+      data = normalizeNotes(data)
+    }
     stream.queue(data)
   })
 
@@ -40,6 +43,9 @@ module.exports.openInput = function(name, opts){
   }
 
   input.on('message', function(deltaTime, data){
+    if (opts && opts.normalizeNotes) {
+      data = normalizeNotes(data)
+    }
     stream.queue(data)
   })
 
@@ -160,4 +166,12 @@ function getOutput(name, opts){
   }
 
   return null;
+}
+
+function normalizeNotes(data) {
+  if (data[0] >= 128 && data[0] < 128 + 16){
+    // convert note off events to 0 velocity note on events
+    data = [data[0]+16, data[1], 0]
+  }
+  return data
 }
