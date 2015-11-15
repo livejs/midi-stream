@@ -35,7 +35,7 @@ module.exports = function(name, opts){
 }
 
 module.exports.openInput = function(name, opts){
-  var stream = Through(write, end)
+  var stream = Through(function () {}, end)
   var input = stream.inputPort = getInput(name, opts)
 
   if (!input){
