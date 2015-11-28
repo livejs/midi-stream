@@ -29,6 +29,6 @@
   "homepage": "https://github.com/mmckegg/midi-stream",
   "dependencies": {
     "through": "~2.3.4",
-    "web-midi": "^1.0.0"
+    "web-midi": "^2.0.0"
   }
 }
